@@ -1,0 +1,17 @@
+.icon-button {
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease 0s;
+    &:hover {
+        background: var(--bg);
+    }
+    span,
+    label,
+    div,
+    img,
+    i {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './assets/styles/vars';
+@import './assets/styles/palette';
+@import './assets/styles/common';
+@import './assets/styles/components/components.scss';
+@import './assets/styles/components/header.scss';
+@import './assets/styles/components/profile-button.scss';
+@import './assets/styles/components/icon-button.scss';
+
+:root {
+    --element-bg: #ffffff;
+    --bg: #f4f3fa;
+    --text: #000;
+    --border: #e2e2e2;
+}
+
+[data-theme='dark'] {
+    --element-bg: #13131d;
+    --bg: #101017;
+    --text: #fff;
+    --border: #393939;
+}
+
+#root {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}

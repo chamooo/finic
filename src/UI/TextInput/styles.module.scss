@@ -1,0 +1,28 @@
+.label {
+    position: relative;
+    top: -50px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--gray-600);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.input {
+    font-size: 40px;
+    outline: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 100%;
+    transition: box-shadow 0.2s ease 0s;
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(var(--primary), $alpha: 1);
+    }
+}
+.withIcon {
+    padding-left: 80px;
+}

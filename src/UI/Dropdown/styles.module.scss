@@ -1,0 +1,18 @@
+.dropdownList {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--element-bg);
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+    transform: translateY(10px);
+}
+.active {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(0);
+}

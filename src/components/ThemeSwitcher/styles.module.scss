@@ -1,0 +1,25 @@
+.themeSwitcher {
+    label {
+        overflow: hidden;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    input:checked + label {
+        .icon {
+            transform: translate(-100%) rotate(-140deg) scale(1);
+        }
+    }
+}
+
+.icon {
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    transform: translate(0) rotate(0deg);
+    &.sun {
+        left: calc(100% + 2px);
+    }
+}
