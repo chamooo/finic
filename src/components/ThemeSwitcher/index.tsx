@@ -1,18 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ThemeContext } from '../../routes/root';
 import s from './styles.module.scss';
 import { BiMoon, BiSun } from 'react-icons/bi';
 
 const ThemeSwitcher: React.FC = () => {
     const body = document.querySelector('body');
-
     const themeContext = useContext(ThemeContext);
 
-    if (!themeContext) {
-        return null;
-    }
-
-    const { theme, setTheme } = themeContext;
+    const { theme, setTheme } = themeContext || {};
 
     const setDarkMode = () => {
         body?.setAttribute('data-theme', 'dark');
@@ -21,14 +16,37 @@ const ThemeSwitcher: React.FC = () => {
         body?.setAttribute('data-theme', 'light');
     };
 
+    useEffect(() => {
+        const currentTheme = localStorage.getItem('currentTheme');
+        if (currentTheme === 'dark') {
+            setDarkMode();
+        } else {
+            setLightMode();
+        }
+    }, []); // Run this effect only once during component mount
+
     const toggleDarkMode = () => {
-        setTheme((prev: 'light' | 'dark') => (prev === 'light' ? 'dark' : 'light'));
-        theme === 'light' ? setDarkMode() : setLightMode();
+        if (!setTheme) return;
+
+        setTheme((prev: 'light' | 'dark') => {
+            const newTheme = prev === 'light' ? 'dark' : 'light';
+
+            // Update the theme in localStorage
+            localStorage.setItem('currentTheme', newTheme);
+
+            // Update the body theme class
+            if (newTheme === 'dark') {
+                setDarkMode();
+            } else {
+                setLightMode();
+            }
+
+            return newTheme;
+        });
     };
 
-    const currentTheme = localStorage.getItem('currentTheme');
-    if (currentTheme === 'dark') {
-        toggleDarkMode();
+    if (!themeContext) {
+        return null;
     }
 
     return (
